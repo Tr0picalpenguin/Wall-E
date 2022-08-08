@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vC4-hS-MDP">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Rover View Controller-->
+        <scene sceneID="l6D-u9-5AE">
+            <objects>
+                <viewController id="xka-hz-RNM" customClass="RoverViewController" customModule="Wall_E" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yZN-dh-HLl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="YYYY-MM-DD" translatesAutoresizingMaskIntoConstraints="NO" id="oXV-WX-PFl">
+                                <rect key="frame" x="0.0" y="60" width="414" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="iLY-5d-hmv"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7aa-2L-5Zt">
+                                <rect key="frame" x="40" y="140" width="334" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="x5y-LQ-brB"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Curiosity"/>
+                                    <segment title="Opportunity"/>
+                                    <segment title="Spirit"/>
+                                </segments>
+                            </segmentedControl>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HBT-F2-EcU">
+                                <rect key="frame" x="90" y="240" width="234" height="234"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="HBT-F2-EcU" secondAttribute="height" multiplier="1:1" id="L4I-hw-ynV"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xqa-5N-qUA"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oXV-WX-PFl" firstAttribute="leading" secondItem="xqa-5N-qUA" secondAttribute="leading" id="6nf-da-6nr"/>
+                            <constraint firstItem="HBT-F2-EcU" firstAttribute="centerX" secondItem="xqa-5N-qUA" secondAttribute="centerX" id="7G7-2N-Fuq"/>
+                            <constraint firstItem="HBT-F2-EcU" firstAttribute="top" secondItem="7aa-2L-5Zt" secondAttribute="bottom" constant="60" id="CGt-6M-mww"/>
+                            <constraint firstItem="HBT-F2-EcU" firstAttribute="leading" secondItem="xqa-5N-qUA" secondAttribute="leading" constant="90" id="GyE-ZY-15T"/>
+                            <constraint firstItem="oXV-WX-PFl" firstAttribute="trailing" secondItem="xqa-5N-qUA" secondAttribute="trailing" id="ai8-9T-30f"/>
+                            <constraint firstItem="oXV-WX-PFl" firstAttribute="top" secondItem="yZN-dh-HLl" secondAttribute="top" constant="60" id="jRy-5E-8el"/>
+                            <constraint firstItem="7aa-2L-5Zt" firstAttribute="leading" secondItem="xqa-5N-qUA" secondAttribute="leading" constant="40" id="jmp-Ne-FFy"/>
+                            <constraint firstItem="xqa-5N-qUA" firstAttribute="trailing" secondItem="7aa-2L-5Zt" secondAttribute="trailing" constant="40" id="wfv-8e-LUi"/>
+                            <constraint firstItem="7aa-2L-5Zt" firstAttribute="top" secondItem="oXV-WX-PFl" secondAttribute="bottom" constant="40" id="zmw-8j-dzE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="msy-pp-Uv0"/>
+                    <connections>
+                        <outlet property="roverImageView" destination="HBT-F2-EcU" id="0Iw-3y-ugq"/>
+                        <outlet property="searchBar" destination="oXV-WX-PFl" id="oKv-V9-jFV"/>
+                        <outlet property="segmentedControl" destination="7aa-2L-5Zt" id="eyU-P3-pUk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aqs-Vw-bzf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2044.9275362318842" y="67.633928571428569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TDu-OC-Ww3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vC4-hS-MDP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6el-hK-yUg">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xka-hz-RNM" kind="relationship" relationship="rootViewController" id="3hg-L6-Qtt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gCR-O8-WZN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1134.7826086956522" y="67.633928571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
