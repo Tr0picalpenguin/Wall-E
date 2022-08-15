@@ -33,31 +33,59 @@
                                     <segment title="Opportunity"/>
                                     <segment title="Spirit"/>
                                 </segments>
+                                <connections>
+                                    <action selector="roverIndexChanged:" destination="xka-hz-RNM" eventType="valueChanged" id="uX8-dk-Ae1"/>
+                                </connections>
                             </segmentedControl>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HBT-F2-EcU">
-                                <rect key="frame" x="90" y="240" width="234" height="234"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="HBT-F2-EcU" secondAttribute="height" multiplier="1:1" id="L4I-hw-ynV"/>
-                                </constraints>
-                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rbc-ct-slE">
+                                <rect key="frame" x="0.0" y="200" width="414" height="634"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="photoCell" rowHeight="163" id="OVi-dt-fGP" customClass="RoverTableViewCell" customModule="Wall_E" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="163"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OVi-dt-fGP" id="Ncc-bs-t7n">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="163"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KmA-ve-2uM">
+                                                    <rect key="frame" x="127.5" y="2" width="159" height="159"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="400" id="ZzE-RM-NY7"/>
+                                                        <constraint firstAttribute="width" secondItem="KmA-ve-2uM" secondAttribute="height" multiplier="1:1" id="aTx-ZS-Gon"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="KmA-ve-2uM" firstAttribute="top" secondItem="Ncc-bs-t7n" secondAttribute="top" constant="2" id="9sW-P4-anK"/>
+                                                <constraint firstAttribute="bottom" secondItem="KmA-ve-2uM" secondAttribute="bottom" constant="2" id="Isw-FM-1U7"/>
+                                                <constraint firstItem="KmA-ve-2uM" firstAttribute="centerX" secondItem="Ncc-bs-t7n" secondAttribute="centerX" id="Oyd-jt-Qq5"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="roverImageView" destination="KmA-ve-2uM" id="miz-qc-Hr4"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xqa-5N-qUA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="oXV-WX-PFl" firstAttribute="leading" secondItem="xqa-5N-qUA" secondAttribute="leading" id="6nf-da-6nr"/>
-                            <constraint firstItem="HBT-F2-EcU" firstAttribute="centerX" secondItem="xqa-5N-qUA" secondAttribute="centerX" id="7G7-2N-Fuq"/>
-                            <constraint firstItem="HBT-F2-EcU" firstAttribute="top" secondItem="7aa-2L-5Zt" secondAttribute="bottom" constant="60" id="CGt-6M-mww"/>
-                            <constraint firstItem="HBT-F2-EcU" firstAttribute="leading" secondItem="xqa-5N-qUA" secondAttribute="leading" constant="90" id="GyE-ZY-15T"/>
+                            <constraint firstItem="rbc-ct-slE" firstAttribute="leading" secondItem="xqa-5N-qUA" secondAttribute="leading" id="HLu-kQ-TCc"/>
+                            <constraint firstItem="xqa-5N-qUA" firstAttribute="bottom" secondItem="rbc-ct-slE" secondAttribute="bottom" constant="28" id="PYF-0g-vg9"/>
                             <constraint firstItem="oXV-WX-PFl" firstAttribute="trailing" secondItem="xqa-5N-qUA" secondAttribute="trailing" id="ai8-9T-30f"/>
                             <constraint firstItem="oXV-WX-PFl" firstAttribute="top" secondItem="yZN-dh-HLl" secondAttribute="top" constant="60" id="jRy-5E-8el"/>
                             <constraint firstItem="7aa-2L-5Zt" firstAttribute="leading" secondItem="xqa-5N-qUA" secondAttribute="leading" constant="40" id="jmp-Ne-FFy"/>
+                            <constraint firstItem="rbc-ct-slE" firstAttribute="top" secondItem="7aa-2L-5Zt" secondAttribute="bottom" constant="20" id="lxW-Sg-HBo"/>
+                            <constraint firstItem="xqa-5N-qUA" firstAttribute="trailing" secondItem="rbc-ct-slE" secondAttribute="trailing" id="sXM-11-8Uf"/>
                             <constraint firstItem="xqa-5N-qUA" firstAttribute="trailing" secondItem="7aa-2L-5Zt" secondAttribute="trailing" constant="40" id="wfv-8e-LUi"/>
                             <constraint firstItem="7aa-2L-5Zt" firstAttribute="top" secondItem="oXV-WX-PFl" secondAttribute="bottom" constant="40" id="zmw-8j-dzE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="msy-pp-Uv0"/>
                     <connections>
-                        <outlet property="roverImageView" destination="HBT-F2-EcU" id="0Iw-3y-ugq"/>
                         <outlet property="searchBar" destination="oXV-WX-PFl" id="oKv-V9-jFV"/>
                         <outlet property="segmentedControl" destination="7aa-2L-5Zt" id="eyU-P3-pUk"/>
                     </connections>

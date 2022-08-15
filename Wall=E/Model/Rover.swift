@@ -8,15 +8,16 @@
 import Foundation
 
 struct TopLevelDictionary: Decodable {
-    let photos: Photo
+    let photos: [Photo]
 }
 
 struct Photo: Decodable {
     let id: Int
+    let sol: Int
     let camera: Camera
     let earth_date: String
     let rover: Rover
-    let img_src: String
+    let img_src: String?
 }
 
 struct Camera: Decodable {
