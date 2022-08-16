@@ -23,8 +23,7 @@ class NetworkController {
     private static let earthDate = "earth_date"
     private static let sol = "sol"
     private static let solValue = "1000"
-    private static let camera = "camera"
-    private static let cameraValue = "FHAZ"
+  
     
     static func fetchTopLevel(with url: URL, completion: @escaping (Result<TopLevelDictionary, ResultError>) -> Void) {
         URLSession.shared.dataTask(with: url) { data, _, error in

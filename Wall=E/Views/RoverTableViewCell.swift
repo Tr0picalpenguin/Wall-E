@@ -8,7 +8,7 @@
 import UIKit
 
 class RoverTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var roverImageView: UIImageView!
     
     var roverImage: UIImage?
@@ -17,7 +17,6 @@ class RoverTableViewCell: UITableViewCell {
         super.prepareForReuse()
         roverImageView.image = nil
     }
-    
     
     func fetchImage(for rover: Photo) {
         guard let imageString = rover.img_src else { return }
@@ -36,5 +35,4 @@ class RoverTableViewCell: UITableViewCell {
     func updateViews(with photo: Photo) {
         fetchImage(for: photo)
     }
-    
 }

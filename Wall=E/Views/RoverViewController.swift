@@ -10,49 +10,48 @@ import UIKit
 class RoverViewController: UIViewController {
     
     
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var roverImageView: UIImageView!
+    let viewModel = RoverViewModel()
     
-    var viewModel: RoverViewModel!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
+    
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         
         searchBar.delegate = self
-        
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
+        viewModel.delegate = self
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
-
-    @IBAction func roverIndexChanged(_ sender: Any) {
+    @IBAction func segmentedControlTapped(_ sender: Any) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             segmentedControl.titleForSegment(at: 0)
-            viewModel.fetchCuriosity(with: searchBar.text!)
+//           
         case 1:
             segmentedControl.titleForSegment(at: 1)
-            viewModel.fetchOpportunity(with: searchBar.text!)
+//
         case 2:
             segmentedControl.titleForSegment(at: 2)
-            viewModel.fetchSpirit(with: searchBar.text!)
+//
         default:
             break
         }
+        tableView.reloadData()
     }
     
-}
-
+    
+}// End of class
 extension RoverViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            return viewModel.curiosityPhotos.count
+            return viewModel.curiostityPhotos.count
         case 1:
             return viewModel.opportunityPhotos.count
         default:
@@ -61,13 +60,18 @@ extension RoverViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "photoCell", for: indexPath) as? RoverTableViewCell else {return UITableViewCell()}
-        let curiosityPhoto = viewModel.curiosityPhotos[indexPath.row]
-        let oppoortunityPhoto = viewModel.opportunityPhotos[indexPath.row]
-        let spiritPhoto = viewModel.spiritPhotos[indexPath.row]
-        
-        cell.updateViews(with: curiosityPhoto)
-        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "photoCell", for: indexPath) as?
+                RoverTableViewCell else { return UITableViewCell()}
+        let photo: Photo
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            photo = viewModel.curiostityPhotos[indexPath.row]
+        case 1:
+            photo = viewModel.opportunityPhotos[indexPath.row]
+        default:
+            photo = viewModel.spiritPhotos[indexPath.row]
+        }
+        cell.updateViews(with: photo)
         return cell
     }
     
@@ -75,11 +79,19 @@ extension RoverViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension RoverViewController: UISearchBarDelegate {
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
         viewModel.fetchCuriosity(with: searchText)
         viewModel.fetchOpportunity(with: searchText)
         viewModel.fetchSpirit(with: searchText)
     }
+}
+extension RoverViewController: RoverViewModelDelegate {
+    func photosLoadedSuccessfully() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    
 }
